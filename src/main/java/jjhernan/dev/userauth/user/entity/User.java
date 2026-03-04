@@ -1,4 +1,4 @@
-package jjhernan.dev.userauth.entity;
+package jjhernan.dev.userauth.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,5 +23,6 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String role; // ROLE_USER, ROLE_ADMIN
+    private String role;
 }
+
