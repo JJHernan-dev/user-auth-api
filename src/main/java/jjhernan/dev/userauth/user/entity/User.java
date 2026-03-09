@@ -3,6 +3,12 @@ package jjhernan.dev.userauth.user.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Entidad que representa un usuario del sistema.
+ * Se almacena en la base de datos y contiene la información
+ * necesaria para la autenticación y autorización.
+ */
+
 @Entity
 @Table(name = "users")
 @Getter

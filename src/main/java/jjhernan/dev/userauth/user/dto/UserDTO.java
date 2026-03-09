@@ -2,6 +2,13 @@ package jjhernan.dev.userauth.user.dto;
 
 import lombok.*;
 
+/**
+ * Data Transfer Object para exponer los datos de un usuario.
+ *
+ * Contiene únicamente la información pública (username y role),
+ * evitando exponer la contraseña u otra información sensible.
+ */
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -11,9 +18,3 @@ public class UserDTO {
     private String username;
     private String role;
 }
-
-
-/*
- * Clase que usamos para enviar o recibir datos desde la API, sin exponer la
- * entidad completa. Evita que el password de la entidad se filtre directamente.
- */

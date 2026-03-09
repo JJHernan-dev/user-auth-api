@@ -1,0 +1,32 @@
+package jjhernan.dev.userauth.auth.service;
+
+import jjhernan.dev.userauth.user.entity.User;
+import jjhernan.dev.userauth.user.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+/**
+ * Servicio encargado de gestionar la lógica de autenticación.
+ *
+ * Verifica las credenciales del usuario comparando la contraseña
+ * proporcionada con la contraseña encriptada almacenada en la base de datos.
+ */
+
+@Service
+@RequiredArgsConstructor
+public class AuthService {
+
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public boolean login(String username, String password){
+
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        return passwordEncoder.matches(password, user.getPassword());
+    }
+
+}
+
