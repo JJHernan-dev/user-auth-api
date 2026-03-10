@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 /**
  * Controlador REST que expone los endpoints de autenticación.
  *
@@ -27,18 +29,14 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request){
+    public Map<String, String> login(@RequestBody LoginRequest request){
 
-        boolean authenticated = authService.login(
+        String token = authService.login(
                 request.getUsername(),
                 request.getPassword()
         );
 
-        if (authenticated){
-            return "Login successful";
-        }
-
-        return "Invalid credentials";
+        return Map.of("token", token);
     }
 
 }
