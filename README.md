@@ -108,7 +108,7 @@ Header: Authorization   Bearer (Poner Token Admin)
 
 Nota: La contraseña se almacena de forma segura encriptada con BCrypt.
 
-### Seguridad
+## 🟩 Seguridad
 
 - Las contraseñas se almacenan usando BCrypt
 - La autenticación se gestiona mediante JWT
