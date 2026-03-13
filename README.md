@@ -5,50 +5,97 @@
 
 API REST desarrollada con **Spring Boot** en **Java** para la gestión de usuarios, incluyendo **registro**, **login** y control de **roles**.
 
-Este proyecto forma parte de mi **portfolio como Backend Developer Junior**, demostrando buenas prácticas en arquitectura REST, validación de datos y seguridad con **Spring Security** y **BCrypt**.
-
+Este proyecto forma parte de mi portfolio como **Backend Developer Junior**, demostrando buenas prácticas en arquitectura REST, autenticación con **JWT**, seguridad con **Spring Security** y almacenamiento seguro de contraseñas usando **BCrypt**.
 ## 🟩 Sobre el proyecto
+Esta API permite:
 
-- Permite registrar nuevos usuarios con contraseñas encriptadas.
-- Permite autenticación de usuarios mediante login.
-- Implementa roles básicos (`ROLE_USER`,`ROLE_ADMIN`).
-- Usa **Spring Data JPA** con base de datos H2 en memoria para pruebas.
-- Seguridad configurada con **Spring Security** (endpoints protegidos y públicos).
+- Registrar nuevos usuarios
+- Autenticar usuarios mediante login
+- Generar tokens JWT para autenticación
+- Controlar acceso mediante roles (ROLE_USER, ROLE_ADMIN)
+- Proteger endpoints usando Spring Security
 
-## 🟩 Requisitos antes de empezar a utilizar la API
+Tecnologías utilizadas:
+- Java 17
+- Spring Boot
+- Spring Scurity
+- Spring Data JPA
+- Maven
+- JWT
+
+## 🟩 Requisitos
+Antes de ejecutar la API necesitas:
+
 - Java 17
 - Maven
 
-## 🟩 Como utilizar esta API
+## 🟩 Cómo ejecutar el proyecto
 
 ### 1 Clonar el repositorio
 git clone https://github.com/tu-usuario/user-auth-api.git
 
-### 2 Ir al directorio de la API
+### 2 Entrar al directorio
 cd user-auth-api
 
-### Acceder a la base de datos H2
-URL: http://localhost:8080/h2-console
-JDBC URL: jdbc:h2:mem:testdb
-Username: h2
-Password: h2
-  
-### Crear usuario (POST)
-POST http://localhost:8080/users
+### 3 Ejecutar la API
+mvn spring-boot:run
+
+### Base de datos H2
+Puedes acceder a la base de datos desde la siguiente url:
+
+- URL: http://localhost:8080/h2-console
+
+Configuración:
+
+- JDBC URL: jdbc:h2:mem:testdb
+- Username: h2
+- Password: h2
+
+## 🟩 Flujo de autenticación (JWT)
+La API utiliza autenticación basada en JSON Web Tokens.
+
+Este es el lujo:
+
+- Login con usuario y contraseña
+- La API devuelve un token JWT
+- El cliente envía el token en el header Authorization
+- Los endpoints protegidos verifican el token
+
+## 🟩 Endpoints
+
+### Iniciar sesión y obtener TOKEN
+POST http://localhost:8080/auth/login
 
 JSON BODY:
 ```json
 {
   "username": "admin",
-  "password": "1234",
-  "role": "ROLE_ADMIN"
+  "password": "admin123"
 }
 ```
 
-### Listar usuarios (GET)
+### Crear usuario
+POST http://localhost:8080/users
+
+JSON BODY:
+```json
+{
+  "username": "JuanJesus",
+  "password": "123",
+  "role": "ROLE_USER"
+}
+```
+
+Header requerido: Authorization |  Bearer <TOKEN_ADMIN>
+
+(Solo los usuarios con rol ADMIN pueden crear usuarios).
+
+### Listar usuarios
 GET http://localhost:8080/users
 
-### Login de usuario (POST)
+Header requerido: Authorization |  Bearer <TOKEN_ADMIN>
+
+### Login de usuario
 POST http://localhost:8080/auth/login
 JSON BODY:
 ```json
@@ -57,8 +104,16 @@ JSON BODY:
   "password": "1234"
 }
 ```
+Header: Authorization   Bearer (Poner Token Admin)
+
 Nota: La contraseña se almacena de forma segura encriptada con BCrypt.
 
+### Seguridad
+
+- Las contraseñas se almacenan usando BCrypt
+- La autenticación se gestiona mediante JWT
+- Los endpoints están protegidos con SPring Security
+- Solo usuarios con ROLE_ADMIN pueden gestionar usuarios
 
 ## 👨‍💻 Autor
 Proyecto desarrollado por Juan Jesús González Hernández
