@@ -100,8 +100,8 @@ POST http://localhost:8080/auth/login
 JSON BODY:
 ```json
 {
-  "username": "admin",
-  "password": "1234"
+  "username": "JuanJesus",
+  "password": "123"
 }
 ```
 Header: Authorization   Bearer (Poner Token Admin)
