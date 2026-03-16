@@ -54,7 +54,7 @@ Configuración:
 ## 🟩 Flujo de autenticación (JWT)
 La API utiliza autenticación basada en JSON Web Tokens.
 
-Este es el lujo:
+Este es el flujo:
 
 - Login con usuario y contraseña
 - La API devuelve un token JWT
