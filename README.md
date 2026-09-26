@@ -1,5 +1,5 @@
 
-<img src="imgReadme/user-auth-api-banner.jpg"/>
+![Banner](imgReadme/user-auth-api-banner.svg)
 
 <br>
 
