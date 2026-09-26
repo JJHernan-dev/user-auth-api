@@ -1,7 +1,7 @@
-## 🔑 USER AUTH API
-![Java](https://img.shields.io/badge/Java-17-orange)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3-brightgreen)
-![Maven](https://img.shields.io/badge/Maven-Build-red)
+
+<img src="imgReadme/user-auth-api-banner.jpg"/>
+
+<br>
 
 API REST desarrollada con **Spring Boot** en **Java** para la gestión de usuarios, incluyendo **registro**, **login** y control de **roles**.
 
@@ -26,7 +26,7 @@ Tecnologías utilizadas:
 ## 🟩 Requisitos
 Antes de ejecutar la API necesitas:
 
-- Java 17
+- [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - Maven
 
 ## 🟩 Cómo ejecutar el proyecto
@@ -51,6 +51,9 @@ Configuración:
 - Username: h2
 - Password: h2
 
+<img src="imgReadme/01_JDBCLogin.JPG"/>
+<img src="imgReadme/01_JDBCLoginBD.JPG"/>
+
 ## 🟩 Flujo de autenticación (JWT)
 La API utiliza autenticación basada en JSON Web Tokens.
 
@@ -63,7 +66,7 @@ Este es el flujo:
 
 ## 🟩 Endpoints
 
-### Iniciar sesión y obtener TOKEN
+### 🟦​ Iniciar sesión y obtener TOKEN
 POST http://localhost:8080/auth/login
 
 JSON BODY:
@@ -74,7 +77,9 @@ JSON BODY:
 }
 ```
 
-### Crear usuario
+<img src="imgReadme/02_loginToken.JPG"/>
+
+### 🟦​ Crear usuario
 POST http://localhost:8080/users
 
 JSON BODY:
@@ -90,13 +95,19 @@ Header requerido: Authorization |  Bearer <TOKEN_ADMIN>
 
 (Solo los usuarios con rol ADMIN pueden crear usuarios).
 
-### Listar usuarios
+<img src="imgReadme/03_crearUsuarioHeader.JPG"/>
+<img src="imgReadme/03_crearUsuario.JPG"/>
+
+### 🟦​ Listar usuarios
 GET http://localhost:8080/users
 
 Header requerido: Authorization |  Bearer <TOKEN_ADMIN>
 
-### Login de usuario
+<img src="imgReadme/04_listarUsuarios.JPG"/>
+
+### 🟦​ Login de usuario
 POST http://localhost:8080/auth/login
+
 JSON BODY:
 ```json
 {
@@ -108,6 +119,8 @@ Header: Authorization   Bearer (Poner Token Admin)
 
 Nota: La contraseña se almacena de forma segura encriptada con BCrypt.
 
+<img src="imgReadme/05_loggin.JPG"/>
+
 ## 🟩 Seguridad
 
 - Las contraseñas se almacenan usando BCrypt
@@ -116,5 +129,4 @@ Nota: La contraseña se almacena de forma segura encriptada con BCrypt.
 - Solo usuarios con ROLE_ADMIN pueden gestionar usuarios
 
 ## 👨‍💻 Autor
-Proyecto desarrollado por Juan Jesús González Hernández
-Backend Developer Junior
+Proyecto desarrollado por Juan Jesús González Hernández.
